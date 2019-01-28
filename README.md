@@ -175,7 +175,9 @@ Your initial test loaded the webdriver URL, then saved the Title of the webpage 
 We will begin this by creating our first page object.   First, we will create a pages directory to store our page objects:
 
 ```$ mkdir -p ./test/pages```
+
 Now we will create a main page object called page.js in that folder.  This file will look like:
+
 ```
 export default class Page {
   
@@ -186,6 +188,7 @@ export default class Page {
 ```
 
 This is a basic page that other pages can inherit from.  We will now create a login page object. This page will inherit from the base page and contain getter functions for any selectors we will need in our test.
+
 ```
 import Page from './page';
 
@@ -209,8 +212,9 @@ class LoginPage extends Page {
 
 export default new LoginPage();
 ```
-Now that we've defined all of the needed selectors for our page, we can write a test spec for it. In your /pages/specs folder, create a file called login.spec.js
 
+Now that we've defined all of the needed selectors for our page, we can write a test spec for it. In your /pages/specs folder, create a file called login.spec.js
+```
 import { expect } from 'chai';
 import LoginPage from '../pages/login.page';
 
@@ -232,7 +236,7 @@ describe('login form', () => {
 
         expect(LoginPage.flash.getText()).to.contain('You logged into a secure area!');
     });
-});
+}); 
 ```
 
 You should now see both of your specs run in Chrome.
